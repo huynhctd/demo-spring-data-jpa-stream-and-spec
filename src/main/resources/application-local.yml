@@ -1,0 +1,29 @@
+spring:
+  liquibase:
+    change-log: classpath:/db/changelog/local/changelog-local.xml
+    drop-first: true # for demo, remove this if you want to
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: huynhctd
+    password: 123456
+    driverClassName: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+      idle-timeout: 300000
+      connection-timeout: 60000
+      max-lifetime: 900000
+      data-source-properties:
+        reWriteBatchedInserts: true
+        cachePrepStmts: true
+        prepStmtCacheSize: 256
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+        socketTimeout: 30
+  task:
+    execution:
+      pool:
+        core-size: 8
+        max-size: 16
+        queue-capacity: 50
+        keep-alive: 60s
